@@ -28,18 +28,21 @@ ORDER BY table_name;
 SQL
 SELECT * FROM customers;
 Результат: Отримано всі 15 записів клієнтів магазину з їхніми контактними даними та типом контрагента.
+
 Скріншот:
 
 1.2. Вивести тільки назви товарів і їхні ціни з таблиці products
 SQL
 SELECT product_name, unit_price FROM products;
 Результат: Сформовано прайс-лист асортименту техніки (тільки назва та ціна за одиницю).
+
 Скріншот:
 
 1.3. Показати контактні дані всіх співробітників (ім'я, прізвище, телефон, email)
 SQL
 SELECT first_name, last_name, phone, email FROM employees;
 Результат: Отримано контактну інформацію всього персоналу компанії для внутрішнього зв'язку.
+
 Скріншот:
 
 2. Прості умови WHERE
@@ -47,18 +50,21 @@ SELECT first_name, last_name, phone, email FROM employees;
 SQL
 SELECT * FROM customers WHERE city = 'Київ';
 Результат: Відібрано клієнтів зі столиці для адресної кур'єрської доставки.
+
 Скріншот:
 
 2.2. Вивести товари, які коштують більше 25000 грн
 SQL
 SELECT product_name, unit_price FROM products WHERE unit_price > 25000;
 Результат: Відображено преміальні моделі ноутбуків, смартфонів та телевізорів дорожче 25 000 грн.
+
 Скріншот:
 
 2.3. Показати всі замовлення зі статусом 'delivered'
 SQL
 SELECT * FROM orders WHERE order_status = 'delivered';
 Результат: Отримано замовлення, які були успішно доставлені покупцям.
+
 Скріншот:
 
 2.4. Знайти співробітників відділу продажів (посада містить "продаж")
@@ -67,6 +73,7 @@ SELECT employee_id, first_name, last_name, title
 FROM employees 
 WHERE title ILIKE '%продаж%';
 Результат: Знайдено працівників комерційного відділу на посадах «Менеджер з продажу».
+
 Скріншот:
 
 3. Базове сортування ORDER BY
@@ -74,12 +81,14 @@ WHERE title ILIKE '%продаж%';
 SQL
 SELECT product_name, unit_price FROM products ORDER BY unit_price ASC;
 Результат: Товари виведено в порядку від найдешевшого до найдорожчого.
+
 Скріншот:
 
 3.2. Показати клієнтів в алфавітному порядку за іменем контактної особи
 SQL
 SELECT contact_name, city, phone FROM customers ORDER BY contact_name ASC;
 Результат: Сформовано алфавітний реєстр клієнтів від А до Я.
+
 Скріншот:
 
 3.3. Вивести замовлення від найновіших до найстаріших
@@ -88,6 +97,7 @@ SELECT order_id, order_date, customer_id, order_status
 FROM orders 
 ORDER BY order_date DESC;
 Результат: Журнал замовлень упорядковано від останніх за часом створення до найбільш ранніх.
+
 Скріншот:
 
 4. Обмеження результатів LIMIT
@@ -98,6 +108,7 @@ FROM products
 ORDER BY unit_price DESC 
 LIMIT 10;
 Результат: Виведено десятку найдорожчих пристроїв асортименту.
+
 Скріншот:
 
 4.2. Вивести 5 останніх замовлень (за датою)
@@ -107,6 +118,7 @@ FROM orders
 ORDER BY order_date DESC 
 LIMIT 5;
 Результат: Відображено 5 останніх оформлених замовлень у системі.
+
 Скріншот:
 
 4.3. Отримати перших 8 клієнтів в алфавітному порядку
@@ -116,6 +128,7 @@ FROM customers
 ORDER BY contact_name ASC 
 LIMIT 8;
 Результат: Отримано перші 8 клієнтів за абеткою.
+
 Скріншот:
 
 Рівень 2
@@ -126,6 +139,7 @@ SELECT customer_id, contact_name, city
 FROM customers 
 WHERE contact_name LIKE 'Іван%';
 Результат: Відібрано клієнтів з іменами або прізвищами на «Іван».
+
 Скріншот:
 
 1.2. Вивести товари, в назві яких є слово "phone" або "телефон"
@@ -135,6 +149,7 @@ FROM products
 WHERE product_name ILIKE '%phone%' 
    OR product_name ILIKE '%телефон%';
 Результат: Знайдено всі смартфони та мобільні телефони в базі.
+
 Скріншот:
 
 1.3. Самостійно: 3 власні запити з LIKE
@@ -148,6 +163,7 @@ SELECT contact_name, email FROM customers WHERE email LIKE '%@gmail.com';
 -- 3) Містить: Товари серії Pro
 SELECT product_name, unit_price FROM products WHERE product_name ILIKE '%Pro%';
 Результат: Продемонстровано роботу шаблонів початку, кінця та входження рядка.
+
 Скріншот:
 
 2. Логічні оператори AND, OR, NOT
@@ -158,6 +174,7 @@ FROM products
 WHERE unit_price > 15000 
   AND unit_price < 50000;
 Результат: Вибірка середнього та середньо-високого цінового сегмента техніки.
+
 Скріншот:
 
 2.2. Вивести клієнтів з Києва або Львова, які є юридичними особами
@@ -167,6 +184,7 @@ FROM customers
 WHERE (city = 'Київ' OR city = 'Львів') 
   AND customer_type = 'company';
 Результат: B2B-контрагенти у двох головних ділових центрах України.
+
 Скріншот:
 
 2.3. Самостійно: 4 власні запити з комбінаціями AND, OR, NOT
@@ -187,6 +205,7 @@ WHERE customer_type = 'individual' AND NOT city = 'Київ' AND phone IS NOT NU
 SELECT first_name, last_name, title, email FROM employees 
 WHERE NOT title ILIKE '%продаж%' AND email IS NOT NULL;
 Результат: Сформовано 4 цільові вибірки для різних відділів магазину.
+
 Скріншот:
 
 3. Оператори IN, BETWEEN, IS NULL
@@ -196,6 +215,7 @@ SELECT contact_name, city, phone
 FROM customers 
 WHERE city IN ('Київ', 'Харків', 'Одеса', 'Дніпро');
 Результат: Клієнти з найбільших міст-мільйонників України.
+
 Скріншот:
 
 3.2. Знайти товари в ціновому діапазоні від 10000 до 30000 грн
@@ -204,6 +224,7 @@ SELECT product_name, unit_price
 FROM products 
 WHERE unit_price BETWEEN 10000 AND 30000;
 Результат: Перелік товарів популярного споживчого діапазону цін.
+
 Скріншот:
 
 3.3. Самостійно: по 2 запити для IN, BETWEEN, IS NULL / IS NOT NULL
@@ -220,6 +241,7 @@ SELECT order_id, order_date, order_status FROM orders WHERE order_date BETWEEN '
 SELECT order_id, order_date, order_status FROM orders WHERE shipped_date IS NULL;
 SELECT product_name, description FROM products WHERE description IS NOT NULL;
 Результат: Повністю охоплено перевірку списків значень, діапазонів та наявності даних.
+
 Скріншот:
 
 4. Комбінування умов
@@ -245,6 +267,7 @@ WHERE (order_date BETWEEN '2024-08-01' AND '2024-08-31') AND shipped_date IS NUL
 SELECT contact_name, company_name, city, phone FROM customers 
 WHERE city IN ('Київ', 'Дніпро') AND (phone LIKE '+38067%' OR phone LIKE '+38044%') AND company_name IS NOT NULL;
 Результат: 5 аналітичних зрізів даних із поєднанням різних логічних конструкцій.
+
 Скріншот:
 
 5. Складне сортування та пагінація
@@ -259,6 +282,7 @@ SELECT city, customer_type, contact_name FROM customers ORDER BY city ASC, custo
 -- 3. Замовлення: за статусом (ASC) та датою (DESC)
 SELECT order_status, order_date, order_id FROM orders ORDER BY order_status ASC, order_date DESC;
 Результат: Багаторівневе сортування за двома ключами одночасно.
+
 Скріншот:
 
 5.2. Самостійно: 2 запити з OFFSET для пагінації
@@ -269,6 +293,7 @@ SELECT product_id, product_name, unit_price FROM products ORDER BY product_id AS
 -- 2. Друга сторінка клієнтів (5 на сторінку)
 SELECT customer_id, contact_name, city FROM customers ORDER BY customer_id ASC LIMIT 5 OFFSET 5;
 Результат: Продемонстровано механізм посторінкової вибірки за допомогою LIMIT та OFFSET.
+
 Скріншот:
 
 Висновки
