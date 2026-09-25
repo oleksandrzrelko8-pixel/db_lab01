@@ -73,7 +73,7 @@ WHERE title ILIKE '%продаж%';
 3.1. Відсортувати товари за зростанням ціни
 SQL
 SELECT product_name, unit_price FROM products ORDER BY unit_price ASC;
-Результат: Товари виведено в порядку від найдешевшого (кабель) до найдорожчого.
+Результат: Товари виведено в порядку від найдешевшого до найдорожчого.
 Скріншот:
 
 3.2. Показати клієнтів в алфавітному порядку за іменем контактної особи
@@ -140,15 +140,12 @@ WHERE product_name ILIKE '%phone%'
 1.3. Самостійно: 3 власні запити з LIKE
 SQL
 -- 1) Початок: Товари бренду Apple
--- Бізнес-логіка: Швидка вибірка товарів одного бренду.
 SELECT product_name, unit_price FROM products WHERE product_name ILIKE 'Apple%';
 
 -- 2) Кінець: Клієнти з поштою Gmail
--- Бізнес-логіка: Сегментація аудиторії за поштовим провайдером.
 SELECT contact_name, email FROM customers WHERE email LIKE '%@gmail.com';
 
 -- 3) Містить: Товари серії Pro
--- Бізнес-логіка: Виділення професійної лінійки техніки.
 SELECT product_name, unit_price FROM products WHERE product_name ILIKE '%Pro%';
 Результат: Продемонстровано роботу шаблонів початку, кінця та входження рядка.
 Скріншот:
